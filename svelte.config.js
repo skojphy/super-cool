@@ -12,9 +12,6 @@ const config = {
 		}),
 		paths: {
 			base: dev ? '' : '/super-cool'
-		},
-		prerender: {
-			default: true
 		}
 	}
 };
