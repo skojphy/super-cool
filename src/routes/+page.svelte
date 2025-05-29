@@ -47,10 +47,10 @@
 
 	function toggleBackground() {
 		showBackground = !showBackground;
-		document.documentElement.style.setProperty(
-			'--background-url',
-			showBackground ? 'url(/background.jpg)' : 'none'
-		);
+		const app = document.querySelector('.fan-app');
+		if (app) {
+			app.style.setProperty('--background-url', showBackground ? 'url(/background.jpg)' : 'none');
+		}
 	}
 </script>
 
