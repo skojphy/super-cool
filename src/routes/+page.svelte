@@ -9,7 +9,7 @@
 	let ledColor = '#ff7e6b';
 	// 다크모드
 	let darkMode = false;
-let showBackground = true;
+	let showBackground = true;
 	// 날개 수
 	const bladeCount = 12;
 
@@ -47,7 +47,10 @@ let showBackground = true;
 
 	function toggleBackground() {
 		showBackground = !showBackground;
-		document.documentElement.style.setProperty('--background-url', showBackground ? 'url(/background.jpg)' : 'none');
+		document.documentElement.style.setProperty(
+			'--background-url',
+			showBackground ? 'url(/background.jpg)' : 'none'
+		);
 	}
 </script>
 
@@ -101,7 +104,7 @@ let showBackground = true;
 			{darkMode ? '☀️' : '🌙'}
 		</button>
 		<button class="btn bg-toggle" on:click={toggleBackground}>
-			{showBackground ? '배경 이미지 숨기기' : '배경 이미지 표시'}
+			{showBackground ? '바다 보기' : '바다 숨기기'}
 		</button>
 	</div>
 </main>
