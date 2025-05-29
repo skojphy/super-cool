@@ -1,0 +1,294 @@
+@import 'tailwindcss';
+@plugin "daisyui";
+
+/*
+  super-cool-fan 커스텀 스타일
+  - 시원하고 현대적인 느낌
+  - 선풍기 일러스트, 버튼, 다크모드, LED 효과 등
+*/
+
+body,
+.fan-app {
+	background: linear-gradient(135deg, #e3f5fa 0%, #c2e9f9 100%);
+	min-height: 100vh;
+	font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+	color: #222;
+	transition: background 0.4s;
+}
+
+.fan-app.dark {
+	background: linear-gradient(135deg, #1e3a5f 0%, #0f172a 100%);
+	color: #f4f4f4;
+}
+
+.fan-app {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	padding: 1rem;
+}
+
+.fan-illustration {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 2rem;
+}
+
+.fan-body {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.fan-head {
+	width: 140px;
+	height: 140px;
+	min-width: 40vw;
+	min-height: 40vw;
+	max-width: 140px;
+	max-height: 140px;
+	background: #fff5f5;
+	border-radius: 50%;
+	box-shadow: 0 0 30px 10px #ff7e6b33;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	border: 5px solid #ff8a7e;
+	transition: box-shadow 0.3s;
+}
+
+.fan-blades-container {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 1;
+}
+
+.fan-blades {
+	width: 110px;
+	height: 110px;
+	min-width: 30vw;
+	min-height: 30vw;
+	max-width: 110px;
+	max-height: 110px;
+	position: relative;
+}
+
+.fan-center {
+	width: 40px;
+	height: 40px;
+	background: #ff7e6b;
+	border-radius: 50%;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 2;
+	border: 3px solid #fff;
+	box-shadow: 0 0 10px #ff8a7e;
+}
+
+.fan-blades .blade {
+	--deg: calc(var(--i) * 30deg);
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	width: 50px;
+	height: 15px;
+	min-width: 15vw;
+	min-height: 5vw;
+	max-width: 50px;
+	max-height: 15px;
+	background: #ff8a7e;
+	border-radius: 1px 6px;
+	/* 중앙 기준으로 회전하도록 수정 */
+	transform-origin: 0 50%;
+	transform: translateY(-50%) rotate(var(--deg));
+	opacity: 0.9;
+	box-shadow: 0 2px 8px #ff7e6b;
+}
+
+.fan-blades.spin {
+	animation: spin 1.3s linear infinite;
+}
+.fan-blades.speed-1.spin {
+	animation-duration: 1.3s;
+}
+.fan-blades.speed-2.spin {
+	animation-duration: 0.8s;
+}
+.fan-blades.speed-3.spin {
+	animation-duration: 0.45s;
+}
+
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+.fan-stick {
+	width: 30px;
+	height: 100px;
+	background: linear-gradient(180deg, #ff8a7e 60%, #ffa599 100%);
+	margin-top: -5px;
+	border-radius: 10px;
+	box-shadow: 0 2px 8px #ff7e6b22;
+	z-index: 1;
+}
+
+.fan-base {
+	width: 120px;
+	height: 20px;
+	background: #ff8a7e;
+	border-radius: 45%;
+	margin-top: -10px;
+	box-shadow: 0 4px 12px #ff7e6b33;
+	position: relative;
+}
+
+.fan-base::after {
+	content: '';
+	position: absolute;
+	top: -10px;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 30px;
+	height: 30px;
+	background: #ff8a7e;
+	border-radius: 50%;
+	z-index: -1;
+}
+
+.panel {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 1.2rem;
+	margin-bottom: 1rem;
+	width: 100%;
+	max-width: 400px;
+}
+
+.btn {
+	background: linear-gradient(90deg, #ff8a7e 60%, #ffa599 100%);
+	color: #fff;
+	border: none;
+	border-radius: 2rem;
+	padding: 0.7rem 1.7rem;
+	font-size: 1.13rem;
+	font-weight: 600;
+	box-shadow: 0 2px 10px #ff7e6b22;
+	cursor: pointer;
+	transition:
+		background 0.2s,
+		color 0.2s,
+		box-shadow 0.2s;
+	outline: none;
+}
+.btn:hover,
+.btn.active {
+	background: linear-gradient(90deg, #ff7e6b 90%, #ff6b55 100%);
+	color: #fff;
+	box-shadow: 0 2px 18px #ff7e6b44;
+}
+.btn.power {
+	background: linear-gradient(90deg, #ff8a7e 80%, #ff7e6b 100%);
+}
+.btn.power[aria-label='전원'] {
+	font-size: 1.18rem;
+}
+.btn.speed {
+	margin: 0 0.18rem;
+	background: #fff5f5;
+	color: #ff7e6b;
+	border: 2px solid #ffa599;
+}
+.btn.speed.active,
+.btn.speed:active {
+	background: #ff8a7e;
+	color: #fff;
+	border-color: #ff8a7e;
+}
+.btn:disabled {
+	opacity: 0.4;
+	cursor: not-allowed;
+}
+
+.led-controls {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	font-size: 1rem;
+	margin-top: 0.2rem;
+}
+.led-dot {
+	width: 22px;
+	height: 22px;
+	border-radius: 50%;
+	margin: 0 2px;
+	border: none;
+	outline: none;
+	box-shadow: 0 0 8px #ff7e6b44;
+	cursor: pointer;
+	transition:
+		border 0.2s,
+		box-shadow 0.2s;
+}
+.led-dot:focus {
+	border: 2px solid #ff8a7e;
+}
+
+.btn.dark-toggle {
+	background: #1e3a5f;
+	color: #ff8a7e;
+	border: 2px solid #ff8a7e;
+	margin-top: 0.7rem;
+}
+.fan-app.dark .btn.dark-toggle {
+	background: #ff8a7e;
+	color: #1e3a5f;
+	border: 2px solid #1e3a5f;
+}
+
+/* 반응형 */
+@media (max-width: 600px) {
+	.fan-head {
+		width: 100px;
+		height: 100px;
+	}
+	.fan-blades {
+		width: 70px;
+		height: 70px;
+	}
+	.fan-stick {
+		height: 80px;
+	}
+	.fan-base {
+		width: 120px;
+		height: 20px;
+	}
+	.panel {
+		gap: 0.8rem;
+	}
+	.btn {
+		font-size: 1rem;
+		padding: 0.5rem 1.1rem;
+	}
+	.led-dot {
+		width: 16px;
+		height: 16px;
+	}
+}
