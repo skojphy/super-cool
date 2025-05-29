@@ -104,7 +104,7 @@
 			{darkMode ? '☀️' : '🌙'}
 		</button>
 		<button class="btn bg-toggle" on:click={toggleBackground}>
-			{showBackground ? '바다 보기' : '바다 숨기기'}
+			{showBackground ? '바다 숨기기' : '바다 보기'}
 		</button>
 	</div>
 </main>
