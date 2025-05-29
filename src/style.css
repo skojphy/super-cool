@@ -9,16 +9,24 @@
 
 body,
 .fan-app {
-	background: linear-gradient(135deg, #e3f5fa 0%, #c2e9f9 100%);
+	background: var(--background-url, url('/background.jpg')) center/cover;
+	background-color: #e3f5fa;
 	min-height: 100vh;
 	font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
 	color: #222;
 	transition: background 0.4s;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
 }
 
 .fan-app.dark {
-	background: linear-gradient(135deg, #1e3a5f 0%, #0f172a 100%);
+	background: var(--background-url, url('/background.jpg')) center/cover;
+	background-color: #1e3a5f;
 	color: #f4f4f4;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
 }
 
 .fan-app {
@@ -225,6 +233,17 @@ body,
 .btn:disabled {
 	opacity: 0.4;
 	cursor: not-allowed;
+}
+
+.btn.bg-toggle {
+	background: linear-gradient(90deg, #87ceeb 80%, #66a3d2 100%);
+	color: #222;
+}
+
+.btn.bg-toggle:hover,
+.btn.bg-toggle:active {
+	background: linear-gradient(90deg, #66a3d2 80%, #4d89c1 100%);
+	color: #fff;
 }
 
 .led-controls {
